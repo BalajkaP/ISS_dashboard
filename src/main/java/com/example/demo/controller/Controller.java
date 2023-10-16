@@ -68,7 +68,10 @@ public class Controller {
 
     }
 
-    @PostMapping("/missionCreate/{missionDays}/{mission}/{crew}")
+    //********************************************************************
+    // Odsud dolů jsem všechny  @PostMapping  musel změnit na @GetMapping, protože nemáme POSTMAN!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    @GetMapping("/missionCreate/{missionDays}/{mission}/{crew}")
     public String createMission(@PathVariable String mission,
                                 @PathVariable int missionDays,
                                 @PathVariable int crew) {
@@ -86,7 +89,7 @@ public class Controller {
 
     }
 
-    @PostMapping("/create/{name}/{lastName}")
+    @GetMapping("/create/{name}/{lastName}")
     public String createAstronaut(@PathVariable String name,
                        @PathVariable String lastName) {
         astronautRepository.save(Astronaut.builder()
@@ -96,7 +99,7 @@ public class Controller {
         return "OK";
     }
 
-    @PostMapping("/saveAstronauts")
+    @GetMapping("/saveAstronauts")
     public String saveAstronauts() throws JsonProcessingException {
         String apiUrl = "http://api.open-notify.org/astros.json";
 
